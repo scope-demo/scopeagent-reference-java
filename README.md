@@ -153,26 +153,11 @@ Find below some examples using the [```OkHttp```](https://square.github.io/okhtt
 
 ### CI integration
 
-This demo repository is using [```CircleCI```](https://circleci.com/) to execute the build pipeline.
+This demo repository is using [```Jenkins```](https://jenkins.io/) to execute the build pipeline.
 
-The ```CircleCI``` configuration is kept under the ```.circleci``` folder, which contains the ```config.yml``` file.
+The ```Jenkins``` configuration is kept under the ```Jenkinsfile``` file, which contains the ```Jenkins pipeline``` configuration.
 
-In this file are declared all supported JDK version ```job``` description. 
-Then it is configured the ```workflow``` block with the selected JDK platform required to executed every test class.
-
-In this case, it is configured ```JDK1.7```, ```JDK1.8```, and ```JDK11```.
-
-```.circleci/config.yml```:
-```
-...
-workflows:
-  version: 2
-  build_all:
-    jobs:
-      - jdk7
-      - jdk8
-      - jdk11
-```
+In this case, the pipeline is configured to execute parallel stages for ```JDK1.7```, ```JDK1.8```, and ```JDK11```.
 
 ### ScopeAgent installation and execution
 
@@ -188,7 +173,9 @@ Once the CI server has executed the build pipeline, all test classes will have b
 This means that you can check the examples test results following the next instructions:
  
 1. Access to [```https://demo.codescope.com/```](https://demo.codescope.com)
-2. Click on ```master``` branch link within ```demo-java``` project
+2. Log in with your GitHub account.
+3. Locate the ```scopeagent-reference-java``` project.
+4. Click on ```master``` branch link.
 
 Now you can check the details about every test executed for every JDK version in the las CI build pipeline associated with the last changed you commited to the repository.
 
