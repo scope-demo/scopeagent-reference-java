@@ -187,7 +187,7 @@ Once the CI server has executed the build pipeline, all test classes will have b
 
 This means that you can check the examples test results following the next instructions:
  
-1. Access to [```https://demo.scope.com/```](http://demo.scope.com)
+1. Access to [```https://demo.codescope.com/```](https://demo.codescope.com)
 2. Click on ```master``` branch link within ```demo-java``` project
 
 Now you can check the details about every test executed for every JDK version in the las CI build pipeline associated with the last changed you commited to the repository.
