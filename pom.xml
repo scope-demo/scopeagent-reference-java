@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.undefinedlabs.scope</groupId>
+  <artifactId>demo-java</artifactId>
+  <packaging>pom</packaging>
+  <version>0.0.1-SNAPSHOT</version>
+  <modules>
+    <module>junit4-tests</module>
+    <module>testng-tests</module>
+    <!--<module>junit5-tests</module>--> <!-- Check profile modules since Java 1.8+ -->
+  </modules>
+
+  <name>demo-java</name>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <sourcecode.main.version>1.7</sourcecode.main.version>
+    <sourcecode.test.version>1.7</sourcecode.test.version>
+    <scope.main.version>1.7</scope.main.version>
+    <scope.test.version>1.7</scope.test.version>
+
+    <skip.junit5.tests>true</skip.junit5.tests>
+    <okhttp3.version>3.12.2</okhttp3.version>
+    <assertj.core.version>2.9.1</assertj.core.version>
+
+    <maven.surefire.plugin.version>2.22.1</maven.surefire.plugin.version>
+    <maven.failsafe.plugin.version>2.22.1</maven.failsafe.plugin.version>
+
+    <scope.agent.version>0.1.2</scope.agent.version>
+  </properties>
+
+
+  <build>
+    <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+      <plugins>
+        <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
+        <plugin>
+          <artifactId>maven-clean-plugin</artifactId>
+          <version>3.1.0</version>
+        </plugin>
+        <!-- default lifecycle, jar packaging: see https://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_jar_packaging -->
+        <plugin>
+          <artifactId>maven-resources-plugin</artifactId>
+          <version>3.0.2</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.8.0</version>
+          <configuration>
+            <source>${sourcecode.main.version}</source>
+            <target>${scope.main.version}</target>
+            <testSource>${sourcecode.test.version}</testSource>
+            <testTarget>${scope.test.version}</testTarget>
+            <encoding>${project.build.sourceEncoding}</encoding>
+          </configuration>
+        </plugin>
+        <plugin>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>${maven.surefire.plugin.version}</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-failsafe-plugin</artifactId>
+          <version>${maven.failsafe.plugin.version}</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-jar-plugin</artifactId>
+          <version>3.0.2</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-install-plugin</artifactId>
+          <version>2.5.2</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-deploy-plugin</artifactId>
+          <version>2.8.2</version>
+        </plugin>
+        <!-- site lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#site_Lifecycle -->
+        <plugin>
+          <artifactId>maven-site-plugin</artifactId>
+          <version>3.7.1</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-project-info-reports-plugin</artifactId>
+          <version>3.0.0</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+
+  <profiles>
+    <!-- Builds using a byte code target for Java 7. -->
+    <profile>
+      <id>java7</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+      </activation>
+      <properties>
+        <scope.main.version>1.7</scope.main.version>
+        <scope.test.version>1.7</scope.test.version>
+        <assertj.core.version>2.9.1</assertj.core.version>
+        <okhttp3.version>3.12.2</okhttp3.version>
+        <skip.junit5.tests>true</skip.junit5.tests>
+      </properties>
+    </profile>
+    <!-- Builds using a byte code target for Java 8. -->
+    <profile>
+      <id>java8</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+      </activation>
+      <properties>
+        <scope.main.version>1.8</scope.main.version>
+        <scope.test.version>1.8</scope.test.version>
+        <assertj.core.version>3.12.2</assertj.core.version>
+        <okhttp3.version>3.14.1</okhttp3.version>
+        <skip.junit5.tests>false</skip.junit5.tests>
+      </properties>
+      <modules>
+        <module>junit5-tests</module>
+      </modules>
+    </profile>
+    <!-- Builds using a byte code target for Java 9. -->
+    <profile>
+      <id>java9</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+      </activation>
+      <properties>
+        <scope.main.version>9</scope.main.version>
+        <scope.test.version>9</scope.test.version>
+        <assertj.core.version>3.12.2</assertj.core.version>
+        <okhttp3.version>3.14.1</okhttp3.version>
+        <skip.junit5.tests>false</skip.junit5.tests>
+      </properties>
+      <modules>
+        <module>junit5-tests</module>
+      </modules>
+    </profile>
+    <!-- Builds using a byte code target for Java 10. -->
+    <profile>
+      <id>java10</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+      </activation>
+      <properties>
+        <scope.main.version>10</scope.main.version>
+        <scope.test.version>10</scope.test.version>
+        <assertj.core.version>3.12.2</assertj.core.version>
+        <okhttp3.version>3.14.1</okhttp3.version>
+        <skip.junit5.tests>false</skip.junit5.tests>
+      </properties>
+      <modules>
+        <module>junit5-tests</module>
+      </modules>
+    </profile>
+    <!-- Builds using a byte code target for Java 11. -->
+    <profile>
+      <id>java11</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+      </activation>
+      <properties>
+        <scope.main.version>11</scope.main.version>
+        <scope.test.version>11</scope.test.version>
+        <assertj.core.version>3.12.2</assertj.core.version>
+        <okhttp3.version>3.14.1</okhttp3.version>
+        <skip.junit5.tests>false</skip.junit5.tests>
+      </properties>
+      <modules>
+        <module>junit5-tests</module>
+      </modules>
+    </profile>
+    <!-- Builds using a byte code target for Java 12. -->
+    <profile>
+      <id>java12</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+      </activation>
+      <properties>
+        <scope.main.version>12</scope.main.version>
+        <scope.test.version>12</scope.test.version>
+        <assertj.core.version>3.12.2</assertj.core.version>
+        <okhttp3.version>3.14.1</okhttp3.version>
+        <skip.junit5.tests>false</skip.junit5.tests>
+      </properties>
+      <modules>
+        <module>junit5-tests</module>
+      </modules>
+    </profile>
+    <!-- Builds using a byte code target for Java 13. -->
+    <profile>
+      <id>java13</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+      </activation>
+      <properties>
+        <scope.main.version>13</scope.main.version>
+        <scope.test.version>13</scope.test.version>
+        <assertj.core.version>3.12.2</assertj.core.version>
+        <okhttp3.version>3.14.1</okhttp3.version>
+        <skip.junit5.tests>false</skip.junit5.tests>
+      </properties>
+      <modules>
+        <module>junit5-tests</module>
+      </modules>
+    </profile>
+  </profiles>
+
+</project>
