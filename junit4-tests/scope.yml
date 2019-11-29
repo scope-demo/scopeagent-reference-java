@@ -1,0 +1,5 @@
+scope:
+  logger_level: trace
+  instrumentation:
+    http:
+      payloads: true
