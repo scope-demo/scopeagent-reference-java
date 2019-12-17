@@ -18,3 +18,4 @@ jobs:
         uses: undefinedlabs/scope-for-maven-action@v1
         with:
           dsn: ${{secrets.SCOPE_DSN}}
+          command: mvn verify -fae
