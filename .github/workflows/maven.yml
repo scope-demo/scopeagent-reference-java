@@ -14,6 +14,13 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: ${{ matrix.java }}
+
+      - name: Cache maven repository
+        uses: actions/cache@v1
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven
+
       - name: Scope for Maven
         uses: undefinedlabs/scope-for-maven-action@v1
         with:
