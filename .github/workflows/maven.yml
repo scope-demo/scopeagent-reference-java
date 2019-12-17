@@ -1,0 +1,20 @@
+name: Java CI with Scope for Maven
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        java: [ 1.7, 1.8, 11.0.3 ]
+    steps:
+      - uses: actions/checkout@v1
+      - name: Set up JDK ${{ matrix.java }}
+        uses: actions/setup-java@v1
+        with:
+          java-version: ${{ matrix.java }}
+      - name: Scope for Maven
+        uses: undefinedlabs/scope-for-maven-action@v1
+        with:
+          dsn: ${{secrets.SCOPE_DSN}}
