@@ -19,13 +19,6 @@
 
   <dependencies>
     <dependency>
-      <groupId>com.undefinedlabs.scope</groupId>
-      <artifactId>scope-agent</artifactId>
-      <version>${scope.agent.version}</version>
-      <scope>provided</scope>
-    </dependency>
-
-    <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-api</artifactId>
       <version>1.7.25</version>
@@ -73,7 +66,6 @@
         <artifactId>maven-surefire-plugin</artifactId>
         <configuration>
           <skipTests>${skip.junit5.tests}</skipTests>
-          <argLine>-javaagent:${settings.localRepository}/com/undefinedlabs/scope/scope-agent/${scope.agent.version}/scope-agent-${scope.agent.version}.jar</argLine>
         </configuration>
       </plugin>
       <plugin>
