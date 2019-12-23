@@ -178,25 +178,3 @@ This means that you can check the examples test results following the next instr
 4. Click on ```master``` branch link.
 
 Now you can check the details about every test executed for every JDK version in the las CI build pipeline associated with the last changed you commited to the repository.
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
