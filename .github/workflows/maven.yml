@@ -8,7 +8,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        java: [ 1.7, 1.8, 11.0.3 ]
+        java: 1.8
     steps:
       - uses: actions/checkout@v1
       - name: Set up JDK ${{ matrix.java }}
@@ -26,4 +26,9 @@ jobs:
         uses: undefinedlabs/scope-for-maven-action@v1
         with:
           dsn: ${{secrets.SCOPE_DSN}}
-          command: mvn verify -fae
+          command: mvn verify -fae -Pjava8
+      - uses: actions/upload-artifact@v1
+        if: always()
+        with:
+          name: scopelogs
+          path: /home/runner/work/scopeagent-reference-java/scopeagent-reference-java/logs
