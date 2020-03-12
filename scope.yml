@@ -1,0 +1,9 @@
+logger:
+  level: "debug"
+  root: "/home/runner/work/scopeagent-reference-java/scopeagent-reference-java/logs"
+code_path:
+  enabled: true
+  base_packages: "com.undefinedlabs.scope"
+instrumentation:
+  http:
+    payloads: true
