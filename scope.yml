@@ -7,3 +7,6 @@ code_path:
 instrumentation:
   http:
     payloads: true
+runner:
+  enabled: true
+  send_spans: true
